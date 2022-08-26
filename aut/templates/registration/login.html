@@ -22,17 +22,19 @@
 
 <body>
 
-
+  {% include 'includes/messages.html' %}
 
 
 
   <div class="row justify-content-around align-items-center" style="height: 100vh; margin: 0px">
     <div class="text-center">
       <p>
-        <a href="/"><img src="{% static './img/logo.png' %}" alt=""></a>
+        <a href="{% url 'mainapp:mainpage' %}"><img src="{% static './img/logo.png' %}" alt=""></a>
       </p>
       <h2>Вход пользователя</h2>
-      <form>
+      <form method="POST">
+
+        {% csrf_token %}
         <p>
           <input id="id_username" class="form-control" type="text" name="username" placeholder="Имя пользователя"
             required="" autofocus="">
@@ -44,8 +46,17 @@
           <button type="submit" class="btn btn-primary btn-block">Войти</button>
         </p>
       </form>
-      <p class="text-right">
-        <a href=""><small>Забыли пароль?</small></a>
+
+      <p>
+      <div class="row justify-content-between">
+        <div class="col">
+          <a href="{% url 'authapp:register' %}"><small>Регистрация</small></a>
+        </div>
+        <div class="col">
+          <a href=""><small>Забыли пароль?</small></a>
+        </div>
+      </div>
+
       </p>
       <h4>Вход через социальные сети</h4>
       <p>
@@ -77,6 +88,16 @@
   <!-- FontAwesome -->
   <script src="{% static 'js/fontawesome.all.min.js' %}"></script>
 
+  <!--Toasts-->
+  <script>
+    $(document).ready(function () {
+      {% if messages %}
+      //--Toasts--
+      $(".toast").toast({ delay: 5000 });
+      $(".toast").toast('show');
+      {% endif %}
+    });
+  </script>
 
 
 </body>
