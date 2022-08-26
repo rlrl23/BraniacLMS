@@ -1,3 +1,6 @@
+from django.db import models
+
+# Create your models here.
 from pathlib import Path
 from time import time
 from django.contrib.auth.base_user import AbstractBaseUser
@@ -18,7 +21,7 @@ def users_avatars_path(instance, filename):
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username_validator = ASCIIUsernameValidator()
-    username = models.CharField(_("username"),
+    username = models.CharField(("username"),
                                 max_length=150,
                                 unique=True,
                                 help_text=_(
@@ -29,29 +32,29 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     },
     )
 
-    first_name = models.CharField(_("first name"), max_length=150, blank=True)
-    last_name = models.CharField(_("last name"), max_length=150, blank=True)
+    first_name = models.CharField(("first name"), max_length=150, blank=True)
+    last_name = models.CharField(("last name"), max_length=150, blank=True)
     age = models.PositiveIntegerField(blank=True, null=True)
     avatar = models.ImageField(
         upload_to=users_avatars_path, blank=True, null=True
     )
     email = models.CharField(
-        _("email address"),
+        ("email"),
         max_length=256,
         unique=True,
         error_messages={
-            "unique": _("A user with that email address already exists."),
+            "unique": ("A user with that email address already exists."),
         },
     )
     is_staff = models.BooleanField(
-        _("staff status"),
+        ("staff status"),
         default=False,
-        help_text=_(
+        help_text=(
             "Designates whether the user can log into this admin site."
         ),
     )
     is_active = models.BooleanField(
-        _("active"),
+        ("active"),
         default=True,
         help_text=_(
             "Designates whether this user should be treated as active. \

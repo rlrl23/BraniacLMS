@@ -1,3 +1,5 @@
+from django.shortcuts import render
+
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -5,6 +7,7 @@ from django.urls import reverse_lazy
 from authapp import models
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.safestring import mark_safe
 
 
 class CustomLoginView(LoginView):
@@ -35,7 +38,8 @@ class CustomLogoutView(LogoutView):
 
 
 class RegisterView(TemplateView):
-    template_name: "registration/register.html"
+
+    template_name = "registration/register.html"
 
     def post(self, request, *args, **kwargs):
         try:
@@ -52,28 +56,28 @@ class RegisterView(TemplateView):
                     username=request.POST.get("username"),
                     first_name=request.POST.get("first_name"),
                     last_name=request.POST.get("last_name"),
-                    age=request.POST.get("age")
-                    if request.POST.get("age") else 0,
+                    age=request.POST.get("age"),
+                    # if request.POST.get("age") else 0,
                     avatar=request.FILES.get("avatar"),
                     email=request.POST.get("email"),
                 )
-            new_user.set_password(request.POST.get("password1"))
-            new_user.save()
-            messages.add_message(
-                request, messages.INFO, _("Registration success!")
-            )
-            return HttpResponseRedirect(reverse_lazy("authapp:login"))
+                new_user.set_password(request.POST.get("password1"))
+                new_user.save()
+                messages.add_message(
+                    request, messages.INFO, _("Registration success!")
+                )
+                return HttpResponseRedirect(reverse_lazy("authapp:login"))
         except Exception as exp:
             messages.add_message(
-                request, messages.WARNING, mark_safe(
-                    f"Something goes wrong: <br>{exp}"),
+                request, messages.WARNING,
+                mark_safe(f"Something goes wrong: <br>{exp}"),
 
             )
         return HttpResponseRedirect(reverse_lazy("authapp:register"))
 
 
 class ProfileEditView(LoginRequiredMixin, TemplateView):
-    template_name: "registration/profile_edit.html"
+    template_name = "registration/profile_edit.html"
     login_url = reverse_lazy("authapp:login")
 
     def post(self, request, *args, **kwargs):
