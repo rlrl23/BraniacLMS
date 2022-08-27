@@ -1,6 +1,10 @@
 from datetime import datetime
 from django.http import HttpResponse
 from django.views.generic import TemplateView
+<<<<<<< HEAD
+=======
+import json
+>>>>>>> lesson_3
 
 
 class MainPageView(TemplateView):
@@ -12,10 +16,17 @@ class NewsPageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+<<<<<<< HEAD
         context['news_title'] = 'Громкий новостной заголовок'
         context['news_preview'] = 'Предварительное описание, которое заинтересует каждого'
         context['range'] = range(1, 5)
         context['datetime_obj'] = datetime.now()
+=======
+        with open('mainapp/templates/hot_news.json', 'r', encoding='utf-8') as f:
+            news = json.load(f)
+            context['range'] = range(1, len(news)+1)
+            context['news'] = news
+>>>>>>> lesson_3
         return context
 
 
