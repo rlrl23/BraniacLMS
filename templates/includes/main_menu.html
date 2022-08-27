@@ -26,16 +26,16 @@
                         Профиль
                     </a>
                     <div class="dropdown-menu" aria-labelledby="ddProfile">
-                        <a class="dropdown-item" href="{% url 'authapp:profile_edit' %}">Редактировать профиль</a>
+                        <a class="dropdown-item" href="#">Редактировать профиль</a>
                         <a class="dropdown-item" href="#">Мои курсы</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Модерация</a>
                         <a class="dropdown-item" href="#">Административный раздел</a>
                         <div class="dropdown-divider"></div>
                         {% if user.is_authenticated %}
-                <li><a class="dropdown-item" href="{% url 'authapp:logout' %}">Выйти</a></li>
+                <li><a class="dropdown-item" href="#">Выйти</a></li>
                 {% else %}
-                <li><a class="dropdown-item" href="{% url 'authapp:login' %}">Войти</a></li>
+                <li><a class="dropdown-item" href="#">Войти</a></li>
                 {% endif %}
 
         </div>

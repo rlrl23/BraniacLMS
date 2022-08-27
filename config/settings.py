@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "markdownify.apps.MarkdownifyConfig",
     "mainapp",
-    "authapp",
+
 ]
 
 MIDDLEWARE = [
@@ -68,7 +68,7 @@ TEMPLATES = [
                 "django.template.context_processors.media",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "mainapp.context_processors.example.simple_context_processors",
+                # "mainapp.context_processors.example.simple_context_processors",
             ],
         },
     },
@@ -119,8 +119,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-AUTH_USER_MODEL = "authapp.CustomUser"
 
 
 # Static files (CSS, JavaScript, Images)

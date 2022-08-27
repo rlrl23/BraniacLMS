@@ -30,6 +30,25 @@ class NewsPageDetailView(TemplateView):
 class CoursesPageView(TemplateView):
     template_name = "mainapp/courses_list.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['courses'] = mainapp_models.Courses.objects.all()
+        return context
+
+
+class CoursesPageDetailView(TemplateView):
+    template_name = 'mainapp/courses_detail.html'
+
+    def get_context_data(self, pk=None, **kwargs):
+        context = super().get_context_data(pk=pk, **kwargs)
+        context['course_object'] = get_object_or_404(
+            mainapp_models.Courses, pk=pk)
+        context['teachers'] = mainapp_models.CourseTeachers.objects.filter(
+            course=context['course_object'])
+        context['lessons'] = mainapp_models.Lesson.objects.filter(
+            course=context['course_object'])
+        return context
+
 
 class ContactsPageView(TemplateView):
     template_name = "mainapp/contacts.html"
