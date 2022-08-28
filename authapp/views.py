@@ -8,12 +8,13 @@ from authapp import models
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.safestring import mark_safe
+import os
 
 
 class CustomLoginView(LoginView):
     def form_valid(self, form):
         ret = super().form_valid(form)
-        message = _("Login success!<br>Hi, %(username)s") % {
+        message = ("Login success!<br>Hi, %(username)s") % {
             "username": self.request.user.get_full_name()
             if self.request.user.get_full_name()
             else self.request.user.get_username()
@@ -33,7 +34,7 @@ class CustomLoginView(LoginView):
 
 class CustomLogoutView(LogoutView):
     def dispatch(self, request, *args, **kwargs):
-        messages.add_message(self.request, messages.INFO, _("See you later!"))
+        messages.add_message(self.request, messages.INFO, ("See you later!"))
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -96,8 +97,10 @@ class ProfileEditView(LoginRequiredMixin, TemplateView):
                 if request.user.avatar and os.path.exists(request.user.avatar.path):
                     os.remove(request.user.avatar.path)
                 request.user.avatar = request.FILES.get("avatar")
-                request.user.save()
-                messages.add_message(request, messages.INFO, _("Saved!"))
+            request.user.save()
+            messages.add_message(request, messages.INFO, ("Saved!"))
+            return HttpResponseRedirect(reverse_lazy("authapp:profile_edit"))
+
         except Exception as exp:
             messages.add_message(request, messages.WARNING, mark_safe(f"Something does wrong:<br>{exp}"),
                                  )
