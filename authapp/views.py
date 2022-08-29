@@ -57,17 +57,17 @@ class RegisterView(TemplateView):
                     username=request.POST.get("username"),
                     first_name=request.POST.get("first_name"),
                     last_name=request.POST.get("last_name"),
-                    age=request.POST.get("age"),
-                    # if request.POST.get("age") else 0,
+                    age=request.POST.get("age")
+                    if request.POST.get("age") else 0,
                     avatar=request.FILES.get("avatar"),
                     email=request.POST.get("email"),
                 )
-                new_user.set_password(request.POST.get("password1"))
-                new_user.save()
-                messages.add_message(
-                    request, messages.INFO, _("Registration success!")
-                )
-                return HttpResponseRedirect(reverse_lazy("authapp:login"))
+            new_user.set_password(request.POST.get("password1"))
+            new_user.save()
+            messages.add_message(
+                request, messages.INFO, ("Registration success!")
+            )
+            return HttpResponseRedirect(reverse_lazy("authapp:login"))
         except Exception as exp:
             messages.add_message(
                 request, messages.WARNING,

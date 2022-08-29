@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from telnetlib import AUTHENTICATION
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -69,6 +70,10 @@ TEMPLATES = [
                 "django.template.context_processors.media",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                # "mainapp.context_processors.example.simple_context_processor",
+                "social_django.context_processors.backends",
+                "social_django.context_processors.login_redirect",
+
 
             ],
         },
@@ -123,6 +128,10 @@ USE_TZ = True
 
 AUTH_USER_MODEL = "authapp.CustomUser"
 
+AUTHENTICATION_BACKENDS = ("social_core.backends.github.GithubOAuth2",
+                           'social_core.backends.vk.VKOAuth2',
+
+                           "django.contrib.auth.backends.ModelBackend",)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -147,3 +156,9 @@ LOGIN_REDIRECT_URL = "mainapp:main_page"
 LOGOUT_REDIRECT_URL = "mainapp:main_page"
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
+
+SOCIAL_AUTH_GITHUB_KEY = '17b653982f07b5f7580e'
+SOCIAL_AUTH_GITHUB_SECRET = '6538ccb258caf47f5404466789546829f74b6509'
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '51412406'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'hHSDHzUW14JuHQgEdXtK'
