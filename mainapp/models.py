@@ -27,6 +27,11 @@ class News(models.Model):
         self.deleted = True
         self.save()
 
+    class Meta():
+        verbose_name = ("News")
+        verbose_name_plural = ("News")
+        ordering = ('-created',)
+
 
 class Courses(models.Model):
     name = models.CharField(max_length=256, verbose_name='Name')
