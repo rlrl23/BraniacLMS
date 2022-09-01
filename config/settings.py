@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     "markdownify.apps.MarkdownifyConfig",
     "social_django",
     "mainapp",
-
+    "authapp",
+    "crispy_forms",
 ]
 
 MIDDLEWARE = [
@@ -70,15 +71,8 @@ TEMPLATES = [
                 "django.template.context_processors.media",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-<<<<<<< HEAD
-                # "mainapp.context_processors.example.simple_context_processor",
                 "social_django.context_processors.backends",
                 "social_django.context_processors.login_redirect",
-
-
-=======
-                # "mainapp.context_processors.example.simple_context_processors",
->>>>>>> lesson_4
             ],
         },
     },
@@ -130,15 +124,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-<<<<<<< HEAD
 AUTH_USER_MODEL = "authapp.CustomUser"
 
 AUTHENTICATION_BACKENDS = ("social_core.backends.github.GithubOAuth2",
                            'social_core.backends.vk.VKOAuth2',
 
                            "django.contrib.auth.backends.ModelBackend",)
-=======
->>>>>>> lesson_4
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -169,3 +161,5 @@ SOCIAL_AUTH_GITHUB_SECRET = '6538ccb258caf47f5404466789546829f74b6509'
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = '51412406'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'hHSDHzUW14JuHQgEdXtK'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -1,21 +1,12 @@
 <div class="position absolute w-100" style="z-index: 1;">
     <div aria-live="polite" aria-atomic="true" class="m-2">
         <div class="d-flex align-items-end flex-column">
-<<<<<<< HEAD
-            {% for message in messages %}
-            <div class="toast flex-fill w-100  border warning " role=" alert" aria-live="assertive" aria-atomic="true"
-                style="right: 0;">
-                <div class="toast-header">
-                    <span class="mr-2"><i class="far fa-envelope"></i></span>
-                    <strong class="mr-auto text-warning">
-=======
             {% for message in messages%}
             <div class="toast flex-fill w-100
              " role="alert" aria-live="assertive" aria-atomic="true" style="right: 0;">
                 <div class="toast-header">
                     <span class="mr-2"><i class="far fa-envelope"></i></span>
                     <strong class="mr-auto">
->>>>>>> lesson_4
                         {{message.tags|capfirst}} message
                     </strong>
                     <small class="text-muted">just now</small>
@@ -27,14 +18,11 @@
                     {{ message}}
                 </div>
             </div>
-<<<<<<< HEAD
 
             <script>
                 console.log("{{ message}}");
             </script>
 
-=======
->>>>>>> lesson_4
             {%endfor%}
         </div>
     </div>
