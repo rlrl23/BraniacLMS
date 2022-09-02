@@ -1,10 +1,8 @@
 from datetime import datetime
 from django.http import HttpResponse
 from django.views.generic import TemplateView
-<<<<<<< HEAD
-=======
-import json
->>>>>>> lesson_3
+from django.shortcuts import get_object_or_404
+from mainapp import models as mainapp_models
 
 
 class MainPageView(TemplateView):
@@ -16,24 +14,16 @@ class NewsPageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-<<<<<<< HEAD
-        context['news_title'] = 'Громкий новостной заголовок'
-        context['news_preview'] = 'Предварительное описание, которое заинтересует каждого'
-        context['range'] = range(1, 5)
-        context['datetime_obj'] = datetime.now()
-=======
-        with open('mainapp/templates/hot_news.json', 'r', encoding='utf-8') as f:
-            news = json.load(f)
-            context['range'] = range(1, len(news)+1)
-            context['news'] = news
->>>>>>> lesson_3
+        context['news'] = mainapp_models.News.objects.all()
         return context
 
 
-class NewsWithPaginatorView(NewsPageView):
-    def get_context_data(self, page, **kwargs):
-        context = super().get_context_data(page=page, **kwargs)
-        context['page_num'] = page
+class NewsPageDetailView(TemplateView):
+    template_name = 'mainapp/news_detail.html'
+
+    def get_context_data(self, pk=None, **kwargs):
+        context = super().get_context_data(pk=pk, **kwargs)
+        context['news_object'] = get_object_or_404(mainapp_models.News, pk=pk)
         return context
 
 
