@@ -54,6 +54,10 @@ class Courses(models.Model):
         self.deleted = True
         self.save()
 
+    class Meta():
+        verbose_name = ("Course")
+        verbose_name_plural = ("Courses")
+
 
 class CourseFeedback(models.Model):
     RATING = ((5, "⭐⭐⭐⭐⭐"), (4, "⭐⭐⭐⭐"), (3, "⭐⭐⭐"), (2, "⭐⭐"), (1, "⭐"))
@@ -108,3 +112,7 @@ class CourseTeachers(models.Model):
     def delete(self, *args):
         self.deleted = True
         self.save()
+
+    class Meta():
+        verbose_name = ("Teacher")
+        verbose_name_plural = ("Teachers")

@@ -8,6 +8,7 @@ from mainapp import models as mainapp_models
 @admin.register(mainapp_models.News)
 class NewsAdmin(admin.ModelAdmin):
     search_fields = ['title', 'body', 'preambule']
+    list_filter = ['created']
 
 
 @admin.register(mainapp_models.Lesson)
@@ -27,3 +28,16 @@ class LessonAdmin(admin.ModelAdmin):
     mark_deleted.short_description = ("Mark deleted")
 
     get_course_name.short_description = ("Course")
+
+
+@admin.register(mainapp_models.CourseTeachers)
+class CourseTeachersAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name_first', 'name_second', 'deleted']
+    list_filter = ['course', 'deleted']
+
+
+@admin.register(mainapp_models.Courses)
+class CoursesAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'cost', 'created', 'deleted']
+    list_filter = ['created']
+    search_fields = ['name', 'description']
