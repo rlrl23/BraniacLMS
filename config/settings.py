@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "social_django",
     "mainapp",
     "authapp",
+    "crispy_forms",
 ]
 
 MIDDLEWARE = [
@@ -69,11 +70,8 @@ TEMPLATES = [
                 "django.template.context_processors.media",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                # "mainapp.context_processors.example.simple_context_processor",
                 "social_django.context_processors.backends",
                 "social_django.context_processors.login_redirect",
-
-
             ],
         },
     },
@@ -132,6 +130,7 @@ AUTHENTICATION_BACKENDS = ("social_core.backends.github.GithubOAuth2",
 
                            "django.contrib.auth.backends.ModelBackend",)
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -161,3 +160,5 @@ SOCIAL_AUTH_GITHUB_SECRET = '6538ccb258caf47f5404466789546829f74b6509'
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = '51412406'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = 'hHSDHzUW14JuHQgEdXtK'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -26,6 +26,7 @@ urlpatterns = [
          ),
     path("mainapp/", include("mainapp.urls", namespace="mainapp")),
     path("authapp/", include("authapp.urls", namespace="authapp")),
+
 ]
 
 if settings.DEBUG:

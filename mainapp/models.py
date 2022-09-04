@@ -1,7 +1,7 @@
 from tabnanny import verbose
 from unittest.util import _MAX_LENGTH
 from django.db import models
-
+from django.contrib.auth import get_user_model
 # Create your models here.
 
 
@@ -27,6 +27,11 @@ class News(models.Model):
         self.deleted = True
         self.save()
 
+    class Meta():
+        verbose_name = ("News")
+        verbose_name_plural = ("News")
+        ordering = ('-created',)
+
 
 class Courses(models.Model):
     name = models.CharField(max_length=256, verbose_name='Name')
@@ -43,11 +48,32 @@ class Courses(models.Model):
     deleted = models.BooleanField(default=False)
 
     def __str__(self) -> str:
-        return f'{self.pk} {self.title}'
+        return f'{self.pk} {self.name}'
 
     def delete(self, *args):
         self.deleted = True
         self.save()
+
+    class Meta():
+        verbose_name = ("Course")
+        verbose_name_plural = ("Courses")
+
+
+class CourseFeedback(models.Model):
+    RATING = ((5, "⭐⭐⭐⭐⭐"), (4, "⭐⭐⭐⭐"), (3, "⭐⭐⭐"), (2, "⭐⭐"), (1, "⭐"))
+    course = models.ForeignKey(
+        Courses, on_delete=models.CASCADE, verbose_name=("Course"))
+    user = models.ForeignKey(
+        get_user_model(), on_delete=models.CASCADE, verbose_name=("User"))
+    feedback = models.TextField(
+        default=("No feedback"), verbose_name=("Feedback"))
+    rating = models.SmallIntegerField(
+        choices=RATING, default=5, verbose_name=("Rating"))
+    created = models.DateTimeField(auto_now_add=True, verbose_name=("Created"))
+    deleted = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.course} ({self.user})"
 
 
 class Lesson(models.Model):
@@ -86,3 +112,7 @@ class CourseTeachers(models.Model):
     def delete(self, *args):
         self.deleted = True
         self.save()
+
+    class Meta():
+        verbose_name = ("Teacher")
+        verbose_name_plural = ("Teachers")
