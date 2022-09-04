@@ -53,10 +53,10 @@
                     <li><a href="/mainapp/">Домашняя</a></li>
                     <li><a href="/mainapp/news/">Новости</a></li>
                     {% if user.is_authenticated %}
-                    <li><a href="#">Выйти</a></li>
+                    <li><a href="{% url 'authapp:logout' %}">Выйти</a></li>
                     {% else %}
-                    <li><a href="#">Войти</a></li>
-                    {% endif %}
+                    <li><a href="{% url 'authapp:login' %}">Войти</a></li>
+                    {%endif%}
                 </ul>
                 </p>
             </div>
