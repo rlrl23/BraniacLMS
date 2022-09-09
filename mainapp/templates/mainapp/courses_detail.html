@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
-{% load static markdownify %}
-{% load crispy_forms_tags %}
+{% load static markdownify crispy_forms_tags cache %}
 {% block title %}
 {{ course_object.name }}
 {% endblock title %}
@@ -57,6 +56,7 @@
 </div>
 
 
+{% cache 300 lessons %}
 <div class="accordion" id="accordionLessons">
     {% for item in lessons %}
     <div class="card">
@@ -88,6 +88,7 @@
         </div>
     </div>
     {% endfor %}
+    {%endcache%}
     <h3>Отзывы</h3>
     <div id="feedback_list">
         {% if feedback_list %}
