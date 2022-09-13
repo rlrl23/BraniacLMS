@@ -35,7 +35,7 @@ class TestNewsSelenium(StaticLiveServerTestCase):
                 (By.CSS_SELECTOR, '[type="submit"]'))
         )
         self.selenium.find_element(value="id_username").send_keys("admin")
-        self.selenium.find_element(value="id_password").send_keys("lfnf231293")
+        self.selenium.find_element(value="id_password").send_keys("******")
         button_enter.click()
         # Wait for footer
         WebDriverWait(self.selenium, 5).until(
@@ -94,7 +94,7 @@ class TestNewsPage(TestCase):
         self.client_with_auth = Client()
         path_auth = reverse("authapp:login")
         self.client_with_auth.post(
-            path_auth, data={"username": "admin", "password": "lfnf231293"})
+            path_auth, data={"username": "admin", "password": "******"})
 
     def test_page_open_list(self):
         path = reverse("mainapp:news")
