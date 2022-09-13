@@ -57,6 +57,7 @@ class NewsDeleteView(PermissionRequiredMixin, DeleteView):
 
 class CoursesListView(TemplateView):
     template_name = "mainapp/courses_list.html"
+    paginate_by = 1
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -88,6 +89,11 @@ class CoursesDetailView(TemplateView):
                 course=context["course_object"]).order_by("-created", "-rating")[:5].select_related()
             cache.set(f"feedback_list_{pk}",
                       context["feedback_list"], timeout=300)
+            #import pickle
+            # with open(
+            #f"mainapp/fixtures/005_feedback_list_{pk}.bin", "wb"
+            # ) as outf:
+            #    pickle.dump(context["feedback_list"], outf)
         else:
             context["feedback_list"] = cached_feedback
 

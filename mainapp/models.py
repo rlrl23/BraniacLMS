@@ -64,7 +64,7 @@ class Courses(models.Model):
 class CourseFeedback(models.Model):
     RATING = ((5, "⭐⭐⭐⭐⭐"), (4, "⭐⭐⭐⭐"), (3, "⭐⭐⭐"), (2, "⭐⭐"), (1, "⭐"))
     course = models.ForeignKey(
-        Courses, on_delete=models.CASCADE, verbose_name=_("Course"))
+        Courses, on_delete=models.CASCADE, verbose_name=("Course"))
     user = models.ForeignKey(
         get_user_model(), on_delete=models.CASCADE, verbose_name=_("User"))
     feedback = models.TextField(

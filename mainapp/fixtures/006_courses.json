@@ -1,0 +1,114 @@
+[
+    {
+        "model": "mainapp.courses",
+        "pk": 1,
+        "fields": {
+            "name": "Web Python",
+            "description": "",
+            "description_as_markdown": true,
+            "cost": "10000.50",
+            "cover": "img/course001.jpg",
+            "created": "2022-08-30T07:14:43.220Z",
+            "updated": "2022-08-30T07:14:43.220Z",
+            "deleted": false
+        }
+    },
+    {
+        "model": "mainapp.courses",
+        "pk": 2,
+        "fields": {
+            "name": "Web Golang",
+            "description": "",
+            "description_as_markdown": false,
+            "cost": "9009.99",
+            "cover": "img/course002.jpg",
+            "created": "2022-08-30T07:14:43.225Z",
+            "updated": "2022-08-30T07:14:43.225Z",
+            "deleted": false
+        }
+    },
+    {
+        "model": "mainapp.courses",
+        "pk": 3,
+        "fields": {
+            "name": "Web JavaScript",
+            "description": "",
+            "description_as_markdown": true,
+            "cost": "2500.15",
+            "cover": "img/course003.jpg",
+            "created": "2022-08-30T07:14:43.226Z",
+            "updated": "2022-08-30T07:14:43.226Z",
+            "deleted": false
+        }
+    },
+    {
+        "model": "mainapp.courses",
+        "pk": 4,
+        "fields": {
+            "name": "Web Java",
+            "description": "",
+            "description_as_markdown": false,
+            "cost": "10000.00",
+            "cover": "img/course004.jpg",
+            "created": "2022-08-30T07:14:43.227Z",
+            "updated": "2022-08-30T07:14:43.227Z",
+            "deleted": false
+        }
+    },
+    {
+        "model": "mainapp.courses",
+        "pk": 5,
+        "fields": {
+            "name": "Web PHP",
+            "description": "",
+            "description_as_markdown": false,
+            "cost": "9500.78",
+            "cover": "img/course005.jpg",
+            "created": "2022-08-30T07:14:43.228Z",
+            "updated": "2022-08-30T07:14:43.228Z",
+            "deleted": false
+        }
+    },
+    {
+        "model": "mainapp.courses",
+        "pk": 6,
+        "fields": {
+            "name": "Python AI",
+            "description": "",
+            "description_as_markdown": true,
+            "cost": "6660.66",
+            "cover": "img/course006.jpg",
+            "created": "2022-08-30T07:14:43.229Z",
+            "updated": "2022-08-30T07:14:43.229Z",
+            "deleted": false
+        }
+    },
+    {
+        "model": "mainapp.courses",
+        "pk": 7,
+        "fields": {
+            "name": "DevOps",
+            "description": "",
+            "description_as_markdown": true,
+            "cost": "7770.66",
+            "cover": "img/course007.jpg",
+            "created": "2022-08-30T07:14:43.230Z",
+            "updated": "2022-08-30T07:14:43.230Z",
+            "deleted": false
+        }
+    },
+    {
+        "model": "mainapp.courses",
+        "pk": 8,
+        "fields": {
+            "name": "3D-Modeling",
+            "description": "",
+            "description_as_markdown": true,
+            "cost": "5900.00",
+            "cover": "img/no_image.svg",
+            "created": "2022-08-30T07:14:43.231Z",
+            "updated": "2022-08-30T07:14:43.231Z",
+            "deleted": false
+        }
+    }
+]
