@@ -184,7 +184,7 @@ LOGGING = {
 ALLOWED_HOSTS = ["*"]
 if DEBUG:
     INTERNAL_IPS = ["192.168.1.4",
-                    "127.0.0.1", ]
+                    "127.0.0.1:8000", ]
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
